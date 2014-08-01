@@ -49,7 +49,7 @@ iptables -t nat -A POSTROUTING -s 10.8.0.0/24 -o eth0 -j MASQUERADE
 
 # Write configuration files for client and server
 
-SERVER_IP=$(curl -s canhazip.com || echo "<insert server IP here>")
+SERVER_IP=$(curl -s whatismyip.akamai.com || echo "<insert server IP here>")
 
 >tcp443.conf cat <<EOF
 server      10.8.0.0 255.255.255.0
@@ -63,8 +63,8 @@ keepalive   10 120
 persist-key yes
 persist-tun yes
 comp-lzo    yes
-push        "dhcp-option DNS 8.8.8.8"
-push        "dhcp-option DNS 8.8.4.4"
+push        "dhcp-option DNS 208.67.222.222"
+push        "dhcp-option DNS 208.67.220.220"
 
 # Normally, the following command is sufficient.
 # However, it doesn't assign a gateway when using 
