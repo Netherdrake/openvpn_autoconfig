@@ -91,7 +91,9 @@ nobind
 dev tun
 redirect-gateway def1 bypass-dhcp
 remote $SERVER_IP 443 tcp
-comp-lzo yes
+persist-key yes
+persist-tun yes
+comp-lzo    yes
 
 <key>
 $(cat client-key.pem)
